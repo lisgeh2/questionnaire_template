@@ -37,6 +37,7 @@ from dashboard_code.card_handler import CardHandler
 from dashboard_code.crunch_label import give_crunch_label
 from process_df import build_df
 from process_meta import transform_to_meta, DONT_KNOW
+from dashboard_code.open_question import open_text
 import runpy
 cards = CardHandler()
 
@@ -178,7 +179,11 @@ with a2:
         st.subheader(dashboard_code.HandleMeta.get_column_label(meta, "lisa_autistic"))
         fig = create_piechart(df, meta, "lisa_autistic", height=440)
         st.plotly_chart(fig, use_container_width=True)
-
+b1, b2 = st.columns([1, 1])
+with st.container(key="karte5"):
+    h.set_subtle_title(st, "open_answer", "Open Text")
+    st.subheader(dashboard_code.HandleMeta.get_column_label(meta, "open_answer"))
+    open_text(df, meta, b1, "lisa_autistic", "name", height=440)
 
 # big_number(b2_11, "GFS2_2", "Kommunikation der Gemeinde", "22", "... sind nicht oder überhaupt nicht zufrieden", color="grün", add_percent=True, height=280)
 # big_number(b2_22, "GFS2_2", "Kommunikation der Gemeinde", "39", "... nutzen Social Media-Kanäle nicht", color="gelb", add_percent=True, height=280)

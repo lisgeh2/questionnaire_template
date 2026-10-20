@@ -170,8 +170,10 @@ st.markdown(
 a1, a2 = st.columns([1, 2.7])
 
 
-big_number(a1, "Anzahl", "Diese Frage haben", f"{len(df)}", "... Personen, die Lisa kennen, beantwortet.", color="grün", add_percent=False, height=280)
-big_number(a1, "lisa_autistic", "Davon glauben", f"{round(df["lisa_autistic"].eq(1).sum()/len(df)*100, 1)}", "... Dass eine Autismus-Spektrumsstörung vorliegt", color="rot", add_percent=True, height=280)
+big_number(a1, "Antworten", "N", f"{len(df)}", "... Personen, die Lisa kennen, haben die Umfrage ausgefüllt.", color="grün", add_percent=False, height=200)
+big_number(a1, "lisa_autistic", "Autismus vorhanden?", f"{round(df["lisa_autistic"].eq(1).sum()/len(df)*100, 1)}", "... glauben, dass eine Autismus-Spektrumsstörung vorliegt.", color="rot", add_percent=True, height=200)
+big_number(a1, "lisa_knowledge", "Kennst du Lisa?", f"{int(round(df["lisa_knowledge"].sum()/len(df), 0))}", "... ist der Durschnittswert von Lisa-Kenntnis (1=kennt Lisa gar nicht gut, 10=sehr gut)", color="blau", add_percent=False, height=200)
+
 
 with a2:
     with st.container(key="karte2"):

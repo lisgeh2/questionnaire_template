@@ -166,13 +166,15 @@ st.markdown(
 
 
 # # ── Another chart ──────────────────────────────────────────────────
-# b2_1, b2_2 = st.columns([1, 1])
+a1, a2 = st.columns([1, 4])
 
-# with b2_1:
-with st.container(key="karte2"):
-    st.text("Resultate:")
-    fig = create_piechart(df, meta, "lisa_autistic", height=400)
-    st.plotly_chart(fig, use_container_width=True)
+big_number(a1, "n", "Die Frage haben", f"{len(df)}", "... Personen, die Lisa kennen, beantwortet.", color="grün", add_percent=False, height=280)
+
+with a2:
+    with st.container(key="karte2"):
+        st.text("Resultate:")
+        fig = create_piechart(df, meta, "lisa_autistic", height=400)
+        st.plotly_chart(fig, use_container_width=True)
 
 
 # big_number(b2_11, "GFS2_2", "Kommunikation der Gemeinde", "22", "... sind nicht oder überhaupt nicht zufrieden", color="grün", add_percent=True, height=280)

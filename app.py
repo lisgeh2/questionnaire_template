@@ -14,7 +14,6 @@ import streamlit as st
 import auth
 import storage
 from full_database.process_meta import PAGES, all_elements, element_keys, is_input
-from render_certificate import render
 import process_responses as pr
 # Every answer is stored in st.session_state under this prefix, e.g. "q_age".
 ANSWER_PREFIX = "q_"
@@ -27,7 +26,8 @@ st.set_page_config(page_title="Pre-Trip Questionnaire", page_icon="📝")
 # --------------------------------------------------------------------------
 def init_state() -> None:
     """Set up the keys the app relies on (only the first time)."""
-    st.session_state.setdefault("username", None)
+    # Set this to None if you wanna log it:
+    st.session_state.setdefault("username", "Anonymous")
     st.session_state.setdefault("page_index", 0)
     st.session_state.setdefault("submitted", False)
 
@@ -114,8 +114,8 @@ def login_screen() -> None:
 def render_sidebar() -> None:
     """The standard Streamlit sidebar: who you are, where you are, progress."""
     with st.sidebar:
-        st.write(f"Logged in as **{st.session_state.username}**")
-        st.button("Log out", on_click=log_out, use_container_width=True)
+        #st.write(f"Logged in as **{st.session_state.username}**")
+        #st.button("Log out", on_click=log_out, use_container_width=True)
         st.divider()
 
         # The radio writes straight into page_index, so clicking a page name
@@ -222,34 +222,36 @@ def submit() -> None:
         return
 
     answers = collect_answers()
-    storage.save_response(st.session_state.username, answers)
+    storage.save_response(answers, username=st.session_state.username)
 
     records = pr.reload_responses()
     token = [r for r in records if r["username"] == st.session_state.username][-1]["token"]
 
-    st.session_state.certificate_html = render(token)
+    #st.session_state.certificate_html = render(token)
     st.session_state.submitted = True
     st.rerun()
 
 
-def render_thank_you() -> None:
+def render_thank_you(logout = False) -> None:
+    
     st.title("Thanks! 🎉")
 
-    st.download_button(
-        "Download my certificate (HTML)",
-        data=st.session_state.certificate_html,
-        file_name=f"certificate_{st.session_state.username}.html",
-        mime="text/html",
-    )
+    if logout==True:
+        st.download_button(
+            "Download my certificate (HTML)",
+            data=st.session_state.certificate_html,
+            file_name=f"certificate_{st.session_state.username}.html",
+            mime="text/html",
+        )
 
-    st.button("Finish and logout", on_click=log_out)
+        st.button("Finish and logout", on_click=log_out)
 
 
 # --------------------------------------------------------------------------
 # Main
 # --------------------------------------------------------------------------
 def main() -> None:
-    auth.ensure_demo_user()
+    # auth.ensure_demo_user()
     init_state()
     keep_answers_alive()
 

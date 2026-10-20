@@ -26,13 +26,16 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-def save_response(username: str, answers: dict) -> Path:
+def save_response(answers: dict, username: str = None) -> Path:
     """Append one submission and return the file it was written to."""
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
 
     submitted_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
     # Build token from username + submitted_at + all answers
+    if username is None:
+        username = "anonymous"
+        
     token_data = {"username": username, "submitted_at": submitted_at, "answers": answers}
     token_string = json.dumps(token_data, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     token = hashlib.sha256(token_string.encode("utf-8")).hexdigest()

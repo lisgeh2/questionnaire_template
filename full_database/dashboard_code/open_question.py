@@ -61,7 +61,7 @@ def give_text_html(color, farben, height_css):
     </style>"""
 
 
-def open_text(df, meta, area, text_column, name_colummn=None, number_of_answers=5, color="grün", height=None):
+def open_text(df, meta, area, text_column, name_colummn=None, number_of_answers=5, color="grün", height=None, random_seed=None):
     column_label = get_column_label(meta, text_column)
     
     farben = FARBEN_4_ABSTUFUNGEN[color]
@@ -69,6 +69,9 @@ def open_text(df, meta, area, text_column, name_colummn=None, number_of_answers=
         height = str(height) + "px"
 
     answer_dict = {}
+    if random_seed is not None:
+        df = df.sample(frac=1, random_state=random_seed).reset_index(drop=True)
+    
     for index, row in df.iloc[-number_of_answers:].iloc[::-1].iterrows():
         if name_colummn != None:
             if row[name_colummn] not in answer_dict:
@@ -80,6 +83,8 @@ def open_text(df, meta, area, text_column, name_colummn=None, number_of_answers=
                 answer_dict["(anonymous)"] = {row[text_column]}
             else:
                 answer_dict["(anonymous)"].add(row[text_column])
+    
+    
 
     height_css = f"height: {height};" if height else ""
 

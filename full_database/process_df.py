@@ -46,4 +46,5 @@ def build_df(path=DATA_FILE):
 
     df = pd.DataFrame(records, columns=["username", "submitted_at", *META])
     df["submitted_at"] = pd.to_datetime(df["submitted_at"])
+    df["tz"] = 1          # <- add this: every answer 
     return df

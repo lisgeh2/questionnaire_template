@@ -171,7 +171,7 @@ st.markdown(
 # with b2_1:
 with st.container(key="karte2"):
     st.text("Resultate:")
-    fig = create_piechart(df, meta, "lisa_autistic", height=120)
+    fig = create_piechart(df, meta, "lisa_autistic", height=400)
     st.plotly_chart(fig, use_container_width=True)
 
 

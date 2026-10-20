@@ -168,7 +168,9 @@ st.markdown(
 # # ── Another chart ──────────────────────────────────────────────────
 a1, a2 = st.columns([1, 2.7])
 
+
 big_number(a1, "Anzahl", "Diese Frage haben", f"{len(df)}", "... Personen, die Lisa kennen, beantwortet.", color="grün", add_percent=False, height=280)
+big_number(a1, "lisa_autistic", "Davon glauben", f"{df["lisa_autistic"].eq(1).sum()/len(df)*100}", "... Dass eine Autismus-Spektrumsstörung vorliegt", color="rot", add_percent=False, height=280)
 
 with a2:
     with st.container(key="karte2"):

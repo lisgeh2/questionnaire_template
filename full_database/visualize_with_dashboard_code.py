@@ -176,7 +176,7 @@ with a2:
     with st.container(key="karte2"):
         h.set_subtle_title(st, "lisa_autistic", "Pie Chart")
         st.subheader(dashboard_code.HandleMeta.get_column_label(meta, "lisa_autistic"))
-        fig = create_piechart(df, meta, "lisa_autistic", height=420)
+        fig = create_piechart(df, meta, "lisa_autistic", height=440)
         st.plotly_chart(fig, use_container_width=True)
 
 

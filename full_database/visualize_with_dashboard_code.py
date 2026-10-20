@@ -166,9 +166,9 @@ st.markdown(
 
 
 # # ── Another chart ──────────────────────────────────────────────────
-a1, a2 = st.columns([1, 4])
+a1, a2 = st.columns([1, 2.7])
 
-big_number(a1, "n", "Die Frage haben", f"{len(df)}", "... Personen, die Lisa kennen, beantwortet.", color="grün", add_percent=False, height=280)
+big_number(a1, "Anzahl", "Die Frage haben", f"{len(df)}", "... Personen, die Lisa kennen, beantwortet.", color="grün", add_percent=False, height=280)
 
 with a2:
     with st.container(key="karte2"):

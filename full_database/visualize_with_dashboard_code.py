@@ -172,7 +172,7 @@ a1, a2 = st.columns([1, 2.7])
 
 big_number(a1, "Anzahl Antworten", "", f"{len(df)}", "... Personen, die Lisa kennen, haben die Umfrage ausgefüllt.", color="grün", add_percent=False, height=257)
 big_number(a1, "lisa_autistic", "Autismus vorhanden?", f"{round(df["lisa_autistic"].eq(1).sum()/len(df)*100, 1)}", "... glauben, dass eine Autismus-Spektrumsstörung vorliegt.", color="rot", add_percent=True, height=257)
-big_number(a1, "lisa_knowledge", "Kennst du Lisa?", f"{int(round(df["lisa_knowledge"].sum()/len(df), 0))}", "... ist der Durschnittswert von Lisa-Kenntnis (1=kennt Lisa gar nicht gut, 10=sehr gut)", color="blau", add_percent=False, height=257)
+big_number(a1, "lisa_knowledge", "Kennst du Lisa?", f"{df['lisa_knowledge'].mean():.1f}", "... ist der Durschnittswert von Lisa-Kenntnis (1=kennt Lisa gar nicht gut, 10=sehr gut)", color="blau", add_percent=False, height=257)
 
 
 with a2:

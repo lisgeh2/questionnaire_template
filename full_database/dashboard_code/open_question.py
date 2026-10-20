@@ -22,7 +22,7 @@ def give_text_html(color, farben, height_css):
     </style>"""
 
 
-def open_text(meta, df, area, text_column, name_colummn=None, number_of_answers=5, color="grün", height=None):
+def open_text(df, meta, area, text_column, name_colummn=None, number_of_answers=5, color="grün", height=None):
     farben = FARBEN_4_ABSTUFUNGEN[color]
     if height:
         height = str(height) + "px"

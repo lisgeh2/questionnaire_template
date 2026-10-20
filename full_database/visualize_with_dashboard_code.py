@@ -170,7 +170,7 @@ b2_1, b2_2 = st.columns([1, 1])
 
 with b2_1:
     with st.container(key="karte2"):
-        fig = create_barchart(df, meta, "absorption3", "tz", color="gelb", horizontal=False)
+        fig = create_barchart(df, meta, "lisa_autistic", "tz", color="gelb", horizontal=False)
         st.plotly_chart(fig, use_container_width=True)
 
 # big_number(b2_11, "GFS2_2", "Kommunikation der Gemeinde", "22", "... sind nicht oder überhaupt nicht zufrieden", color="grün", add_percent=True, height=280)

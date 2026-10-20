@@ -38,13 +38,24 @@ def give_text_html(color, farben, height_css):
         margin: 0 0 0.5rem;
         font-style: italic;
         line-height: 1.5;
+        text-align: center;
     }}
-    .answer-card.accent-{color} .quote p::before {{ content: "“"; }}
-    .answer-card.accent-{color} .quote p::after  {{ content: "”"; }}
+    .answer-card.accent-{color} .quote p::before,
+    .answer-card.accent-{color} .quote p::after {{
+        font-size: 2em;
+        font-weight: 700;
+        font-style: normal;
+        color: {farben['basis']};
+        line-height: 0;
+        vertical-align: -0.35em;
+    }}
+    .answer-card.accent-{color} .quote p::before {{ content: "“"; margin-right: 0.15em; }}
+    .answer-card.accent-{color} .quote p::after  {{ content: "”"; margin-left: 0.15em; }}
     .answer-card.accent-{color} .answer-name {{
         font-weight: 700;
         color: {farben['sehr_dunkel']};
         margin-top: 0.5rem;
+        text-align: right;
     }}
     .answer-card.accent-{color} .answer-name::before {{ content: "– "; }}
     </style>"""

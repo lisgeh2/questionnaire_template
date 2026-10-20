@@ -169,12 +169,13 @@ st.markdown(
 a1, a2 = st.columns([1, 2.7])
 
 
-big_number(a1, "Anzahl", "Diese Frage haben", f"{len(df)}", "... Personen, die Lisa kennen, beantwortet.", color="grün", add_percent=False, height=310)
+big_number(a1, "Anzahl", "Diese Frage haben", f"{len(df)}", "... Personen, die Lisa kennen, beantwortet.", color="grün", add_percent=False, height=350)
 big_number(a1, "lisa_autistic", "Davon glauben", f"{round(df["lisa_autistic"].eq(1).sum()/len(df)*100, 1)}", "... Dass eine Autismus-Spektrumsstörung vorliegt", color="rot", add_percent=True, height=280)
 
 with a2:
     with st.container(key="karte2"):
-        st.text("Resultate:")
+        h.set_subtle_title(st, "lisa_autistic", "Pie Chart")
+        st.subheader(dashboard_code.HandleMeta.get_column_label(meta, "lisa_autistic"))
         fig = create_piechart(df, meta, "lisa_autistic", height=400)
         st.plotly_chart(fig, use_container_width=True)
 

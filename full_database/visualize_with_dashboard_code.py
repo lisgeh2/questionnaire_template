@@ -51,8 +51,8 @@ if DATA_TYPE == "jsonl":
     meta_path = here.parent / "frabo.py"
     PAGES = runpy.run_path(meta_path)["PAGES"]
 
-@st.cache_data
-def load_data():
+@st.cache_data()
+def load_data(changed):
     if DATA_TYPE == "sav":
         df, meta = pyreadstat.read_sav(str(data_path))
     elif DATA_TYPE == "jsonl":
@@ -67,7 +67,7 @@ def load_data():
     return df, meta
 
 
-df, meta = load_data()
+df, meta = load_data(os.path.getmtime(data_path))
 
 # define weighting and your environment in the config.py file
 

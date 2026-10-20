@@ -44,7 +44,7 @@ def get_value_labels(meta, variable_name):
         value_labels = meta.variable_value_labels       # <-- fixed
         return value_labels.get(variable_name, {})      # <-- safe default
     elif DATA_TYPE == "jsonl":
-        pass
+        return meta[variable_name]["item_labels"]
 
 
 def get_column_label(meta, variable_name):
@@ -60,7 +60,7 @@ def get_column_label(meta, variable_name):
         return col_labels.get(variable_name, variable_name)  # fall back to var name
     
     elif DATA_TYPE == "jsonl":
-        pass
+        return meta[variable_name]["label"]
 
 def get_group_label_and_single_label(meta, group_col_list):
     if DATA_TYPE == "metatable":

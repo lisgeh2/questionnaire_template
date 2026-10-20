@@ -610,9 +610,13 @@ def header(title=None, subtitle=None, year=None, window=None, image="gfs.png"):
     subtitle = escape(subtitle or "")
     year = escape(str(year or "2026"))
     window = escape(window or "Marktforschung")
+    
+    
+
 
     with open(image, "rb") as f:
-        image_b64 = base64.b64encode(f.read()).decode("utf-8")
+       
+      image_b64 = base64.b64encode(f.read()).decode("utf-8")
     
     if subtitle:
       subtitle_block = give_subtitle_block(subtitle)

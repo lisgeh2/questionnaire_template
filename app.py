@@ -18,7 +18,7 @@ import process_responses as pr
 # Every answer is stored in st.session_state under this prefix, e.g. "q_age".
 ANSWER_PREFIX = "q_"
 
-st.set_page_config(page_title="Pre-Trip Questionnaire", page_icon="📝")
+st.set_page_config(page_title="Pre-Trip Questionnaire", page_icon="📝", initial_sidebar_state="collapsed")
 
 
 # --------------------------------------------------------------------------

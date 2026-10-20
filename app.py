@@ -232,20 +232,20 @@ def submit() -> None:
     st.rerun()
 
 
-def render_thank_you(logout = False) -> None:
-    
+def render_thank_you(logout=False) -> None:
     st.title("Thanks! 🎉")
 
-    if logout==True:
+    if logout:
         st.download_button(
             "Download my certificate (HTML)",
             data=st.session_state.certificate_html,
             file_name=f"certificate_{st.session_state.username}.html",
             mime="text/html",
         )
-
         st.button("Finish and logout", on_click=log_out)
 
+    url = str(st.context.url).rstrip("/")
+    st.link_button("Go to Dashboard", url + "/dashboard/")
 
 # --------------------------------------------------------------------------
 # Main

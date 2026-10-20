@@ -179,7 +179,7 @@ with a2:
     with st.container(key="karte2"):
         h.set_subtle_title(st, "lisa_autistic", "Pie Chart")
         st.subheader(dashboard_code.HandleMeta.get_column_label(meta, "lisa_autistic"))
-        fig = create_piechart(df, meta, "lisa_autistic", height=640)
+        fig = create_piechart(df, meta, "lisa_autistic", height=665)
         st.plotly_chart(fig, use_container_width=True)
 b1, b2 = st.columns([1, 1])
 with b1:
@@ -190,7 +190,7 @@ with b2:
     with st.container(key="karte7"):
         h.set_subtle_title(st, "lisa_knowledge", "Bar Chart")
         st.subheader(dashboard_code.HandleMeta.get_column_label(meta, "lisa_knowledge"))
-        fig = create_barchart(df, meta, "lisa_knowledge", height=440)
+        fig = create_barchart(df, meta, "lisa_knowledge", height=465)
         st.plotly_chart(fig, use_container_width=True)
 
 # big_number(b2_11, "GFS2_2", "Kommunikation der Gemeinde", "22", "... sind nicht oder überhaupt nicht zufrieden", color="grün", add_percent=True, height=280)

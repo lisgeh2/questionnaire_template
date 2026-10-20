@@ -87,11 +87,11 @@ st.markdown(h.set_background(hex_color=BACKGROUND[1]), unsafe_allow_html=True)
 # ── HEADER ──────────────────────────────────────────────────
 st.markdown(
     header(
-        title="OMNIBUS NOVEMBER 2025",
+        title="IS LISA AUISTIC",
         image=here / "images" / "gfs.png",
-        subtitle="Zentrale Kennzahlen, Verhaltensmuster und Trends auf einen Blick. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+        subtitle="A licences therapist has noticed that Lisa avoids eye contact, showed poor mentalizing by not explaining context. That Lisa enjoys data, coding and numbers. As well as shows repetitive fidgeting and unexpressive facial expressions. ADHD and Autism occur together. So. Is Lisa autistic?",
         year=2026,
-        window="Marktforschungs-Dashboard",
+        window="Autism-Dashboard",
     ),
     unsafe_allow_html=True)
 
@@ -166,12 +166,14 @@ st.markdown(
 
 
 # # ── Another chart ──────────────────────────────────────────────────
-b2_1, b2_2 = st.columns([1, 1])
+# b2_1, b2_2 = st.columns([1, 1])
 
-with b2_1:
-    with st.container(key="karte2"):
-        fig = create_barchart(df, meta, "lisa_autistic", "tz", color="gelb", horizontal=False)
-        st.plotly_chart(fig, use_container_width=True)
+# with b2_1:
+with st.container(key="karte2"):
+    st.text("Resultate:")
+    fig = create_piechart(df, meta, "lisa_autistic", height=120)
+    st.plotly_chart(fig, use_container_width=True)
+
 
 # big_number(b2_11, "GFS2_2", "Kommunikation der Gemeinde", "22", "... sind nicht oder überhaupt nicht zufrieden", color="grün", add_percent=True, height=280)
 # big_number(b2_22, "GFS2_2", "Kommunikation der Gemeinde", "39", "... nutzen Social Media-Kanäle nicht", color="gelb", add_percent=True, height=280)

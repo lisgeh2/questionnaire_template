@@ -77,6 +77,7 @@ df, meta = load_data(os.path.getmtime(data_path))
 st.set_page_config(
     page_title="gfs-Dashboard",
     layout="wide",
+    initial_sidebar_state="collapsed",
 )
 
 # ── GLOBALES CSS ─────────────────────────────────────────────

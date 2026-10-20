@@ -87,7 +87,7 @@ st.markdown(h.set_background(hex_color=BACKGROUND[1]), unsafe_allow_html=True)
 # ── HEADER ──────────────────────────────────────────────────
 st.markdown(
     header(
-        title="IS LISA AUISTIC",
+        title="IS LISA AUTISTIC",
         image=here / "images" / "lisa.png",
         subtitle="A licences therapist has noticed that Lisa avoids eye contact, showed poor mentalizing by not explaining context. That Lisa enjoys data, coding and numbers. As well as shows repetitive fidgeting and unexpressive facial expressions. ADHD and Autism occur together. So. Is Lisa autistic?",
         year=2026,

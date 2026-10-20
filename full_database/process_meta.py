@@ -107,6 +107,13 @@ def transform_to_meta(frabo=PAGES):
                 entry["item_labels"] = {}
                 
             meta[element["key"]] = entry
+    
+    meta["tz"] = {
+        "type": "hidden",
+        "label": "Timezone",
+        "item_labels": {1: "1"},
+    }
+    
     return meta
 
 

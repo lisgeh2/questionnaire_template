@@ -187,7 +187,7 @@ with b1:
         open_text(df, meta, b1, "open_answer", "name", height=600, number_of_answers=8)
 
 with b2:
-    with st.container(key="karte7"):s
+    with st.container(key="karte7"):
         h.set_subtle_title(st, "lisa_knowledge", "Bar Chart")
         st.subheader(dashboard_code.HandleMeta.get_column_label(meta, "lisa_knowledge"))
         fig = create_barchart(df, meta, "lisa_knowledge", height=465)

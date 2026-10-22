@@ -13,17 +13,15 @@ app has to change.
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
+import os
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
 DATA_FILE = Path(__file__).parent / "full_database" / "data" / "responses.jsonl"
 
-
-import hashlib
-import json
-from datetime import datetime, timezone
-from pathlib import Path
 
 
 def save_response(answers: dict, username: str = None) -> Path:
@@ -51,6 +49,36 @@ def save_response(answers: dict, username: str = None) -> Path:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
     return DATA_FILE
+
+
+
+def delete_response(token: str) -> bool:
+    """Remove the newest submission with this token. Returns True if one was deleted."""
+    if not DATA_FILE.exists():
+        return False
+
+    with DATA_FILE.open(encoding="utf-8") as f:
+        lines = [line if line.endswith("\n") else line + "\n" for line in f if line.strip()]
+
+    # Search from the end, since newer submissions are appended last.
+    for i in range(len(lines) - 1, -1, -1):
+        if json.loads(lines[i]).get("token") == token:
+            del lines[i]
+            break
+    else:
+        return False
+
+    # Write the remaining lines to a temp file in the same folder, then swap it in.
+    fd, tmp_path = tempfile.mkstemp(dir=DATA_FILE.parent, suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.writelines(lines)
+        os.replace(tmp_path, DATA_FILE)
+    except BaseException:
+        os.unlink(tmp_path)
+        raise
+    return True
+
 
 def load_responses() -> list[dict]:
     """All submissions so far, oldest first."""

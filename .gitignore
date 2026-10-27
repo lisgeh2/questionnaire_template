@@ -1,5 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+.env
+
+# Runtime data (accounts, survey answers) - never commit these
 users.json
 responses.jsonl
-__pycache__/
-venv/
-.jsonl
+*.jsonl
+full_database/data/
+
+# Generated certificates (certificate.html itself is the template)
+certificate_*.html
+
+# Editor / OS
+tempCodeRunnerFile.py
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
